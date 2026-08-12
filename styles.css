@@ -1,0 +1,79 @@
+body {
+    background-color: #F1E8D8;
+    color: #2B2118;
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #8E1B13;
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+#converter-form {
+    width: 350px;
+    padding: 2rem;
+    border: 1px solid #B8A895;
+    background-color: #FAF6EE;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+
+    transition: transform 0.2s;
+}
+
+#converter-form label {
+    color: #6B5B4D;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#converter-form:hover {
+    transform: translateY(-2px);
+}
+
+#number {
+    border-radius: 10px;
+}
+
+button {
+    background-color: #8E1B13;
+    color: #F1E8D8;
+    border: 2px solid transparent;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: #F1E8D8;
+    color: #8E1B13;
+    border-color: #8E1B13;
+}
+
+#roman-numeral {
+    margin-top: 3rem;
+    font-family: Georgia, serif;
+    font-size: 3.5rem;
+    letter-spacing: 0.15em;
+    color: #8E1B13;
+}
+
+.error {
+    font-family: Georgia, serif !important;
+    font-size: 1.5rem !important;
+    letter-spacing: normal !important;
+}
