@@ -21,8 +21,8 @@ function convert_to_roman(number) {
     let final_str = '';
 
     if (!Number.isInteger(number) || number < 1 || number > 3999) {
-        final_str = 'Please enter a valid integer from 1-3999!';
-        console.log(final_str);
+        final_str = 'Please enter an integer between 1-3999.';
+        roman_output.classList.add('error');
         return final_str;
     } 
 
@@ -33,6 +33,7 @@ function convert_to_roman(number) {
         number -= value * count;
     }
 
+    roman_output.classList.remove('error');
     return final_str;
 }
 
