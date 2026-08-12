@@ -17,12 +17,25 @@ let roman_dict = {
     "I": 1
 };
 
+function showError(message) {
+    const errorBox = document.getElementById('error-message');
+    if (!errorBox) return;
+
+    errorBox.innerText = message;
+    errorBox.style.display = 'block';
+    errorBox.style.opacity = '1';
+    
+    setTimeout(() => {
+        errorBox.style.opacity = '0';
+        setTimeout(() => { errorBox.style.display = 'none'; }, 500);
+    }, 6000);
+}
+
 function convert_to_roman(number) {
     let final_str = '';
 
     if (!Number.isInteger(number) || number < 1 || number > 3999) {
-        final_str = 'Please enter an integer between 1-3999.';
-        roman_output.classList.add('error');
+        showError('Please enter an integer between 1-3999.');
         return final_str;
     } 
 
@@ -33,7 +46,6 @@ function convert_to_roman(number) {
         number -= value * count;
     }
 
-    roman_output.classList.remove('error');
     return final_str;
 }
 
