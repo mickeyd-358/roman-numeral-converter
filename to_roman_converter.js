@@ -20,6 +20,12 @@ let roman_dict = {
 function convert_to_roman(number) {
     let final_str = '';
 
+    if (!Number.isInteger(number) || number < 1 || number > 3999) {
+        final_str = 'Please enter a valid integer from 1-3999!';
+        console.log(final_str);
+        return final_str;
+    } 
+
     for (let [key, value] of Object.entries(roman_dict)) {
         let count = Math.floor(number / value);
 
