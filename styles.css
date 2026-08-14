@@ -24,6 +24,10 @@ h1 {
     text-align: center;
 }
 
+#roman-to-integer {
+    display: none;
+}
+
 #converter-form {
     width: min(500px, 80vw);
     padding: 2rem;
@@ -53,10 +57,8 @@ h1 {
 
 input {
     padding: 10px;
-}
-
-#number {
     border-radius: 10px;
+    width: 100%
 }
 
 button {
