@@ -10,6 +10,12 @@
         <h1>Roman Numeral Converter</h1>
             <form id="converter-form">
                 <label for="number">Enter an integer</label>
+                <div id="error-message-box">
+                    <div id="error-message"></div>
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="completion-bar"></div>
+                    </div>
+                </div>
                 <input id="number" name="number" placeholder="1–3999" required>
                 <button type="submit">Convert</button>
             </form>
