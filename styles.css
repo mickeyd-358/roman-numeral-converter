@@ -72,8 +72,58 @@ button:hover {
     color: #8E1B13;
 }
 
-.error {
-    font-family: Georgia, serif !important;
-    font-size: 1.5rem !important;
-    letter-spacing: normal !important;
+#error-message-box {
+    display: none;
+
+    background-color: #F1E8D8;
+    border: 1px solid #8E1B13;
+    border-radius: 10px;
+
+    color: #8E1B13;
+    padding: 14px 18px;
+
+    transition: opacity 0.5s ease;
+
+    z-index: 9999;
+}
+
+#error-message {
+    margin: 0;
+}
+
+.progress-bar {
+    display: none;
+}
+
+.progress-bar.active {
+    display: block;
+
+    width: 100%;
+    height: 5px;
+
+    margin-top: 12px;
+
+    background-color: #D8CFC2;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #8E1B13;
+}
+
+.progress-fill.active {
+    animation: line 6s linear;
+}
+
+@keyframes line {
+    0%{
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
