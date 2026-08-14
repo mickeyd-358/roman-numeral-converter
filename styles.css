@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #F1E8D8;
     color: #2B2118;
@@ -15,10 +19,13 @@ h1 {
     font-family: "Cinzel", Georgia, serif;
     font-weight: normal;
     letter-spacing: 0.05em;
+    width: 50%;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    text-align: center;
 }
 
 #converter-form {
-    width: 350px;
+    width: min(500px, 80vw);
     padding: 2rem;
     border: 1px solid #B8A895;
     background-color: #FAF6EE;
@@ -44,6 +51,10 @@ h1 {
     transform: translateY(-2px);
 }
 
+input {
+    padding: 10px;
+}
+
 #number {
     border-radius: 10px;
 }
@@ -67,9 +78,12 @@ button:hover {
 #roman-numeral {
     margin-top: 3rem;
     font-family: Georgia, serif;
-    font-size: 3.5rem;
     letter-spacing: 0.15em;
     color: #8E1B13;
+
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
 #error-message-box {
