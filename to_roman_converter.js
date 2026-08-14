@@ -18,16 +18,30 @@ let roman_dict = {
 };
 
 function showError(message) {
-    const errorBox = document.getElementById('error-message');
-    if (!errorBox) return;
+    const errorBox = document.getElementById('error-message-box');
+    const errorMessage = document.getElementById('error-message');
+    const progressBar = errorBox.querySelector('.progress-bar');
+    const errorProgress = document.getElementById('completion-bar');
 
-    errorBox.innerText = message;
+    if (!errorBox || !errorMessage || !progressBar || !errorProgress) return;
+
+    errorMessage.innerText = message;
+
     errorBox.style.display = 'block';
     errorBox.style.opacity = '1';
-    
+
+    progressBar.classList.add('active');
+    errorProgress.classList.add('active');
+
     setTimeout(() => {
         errorBox.style.opacity = '0';
-        setTimeout(() => { errorBox.style.display = 'none'; }, 500);
+
+        setTimeout(() => {
+            errorBox.style.display = 'none';
+            progressBar.classList.remove('active');
+            errorProgress.classList.remove('active');
+        }, 500);
+
     }, 6000);
 }
 
