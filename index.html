@@ -8,17 +8,47 @@
 
     <body>
         <h1>Roman Numeral Converter</h1>
-            <form id="converter-form">
-                <label for="number">Enter an integer</label>
-                <div id="error-message-box">
-                    <div id="error-message"></div>
-                    <div class="progress-bar" id="progress-bar">
-                        <div class="progress-fill" id="completion-bar"></div>
-                    </div>
+        <br><br><br><br>
+        <div id="switch-mode">
+            <h2 id="mode-title">Integer into Roman Numeral</h2>
+
+            <button type="button" id="switch">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    fill="white" viewBox="0 0 24 24">
+                    <path d="M17 14H9v2h8v3l5-4-5-4zm-2-4V8H7V5L2 9l5 4v-3z"></path>
+                </svg>
+
+                <label class="switch">
+                    <input type="checkbox" id="toggleCheckbox" hidden>
+                </label>
+            </button>
+        </div>
+
+        <form id="converter-form">
+
+            <div id="error-message-box">
+                <div id="error-message"></div>
+
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress-fill" id="completion-bar"></div>
                 </div>
-                <input id="number" name="number" placeholder="1–3999" required>
-                <button type="submit">Convert</button>
-            </form>
+            </div>
+
+            <div id="integer-to-roman">
+                <label for="integer-input">Enter an integer</label>
+                <div>
+                <input id="integer-input" name="integer" placeholder="1–3999">
+                </div>
+            </div>
+
+            <div id="roman-to-integer">
+                <label for="roman-input">Enter a Roman Numeral</label>
+                <div>
+                <input id="roman-input" name="roman" placeholder="MMXXVI">
+                </div>
+            </div>
+            <button type="submit">Convert</button>
+        </form>
         <h2 id="roman-numeral">--</h2>
 
     <script src="to_roman_converter.js"></script>
