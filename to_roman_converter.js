@@ -1,7 +1,12 @@
 const form = document.getElementById('converter-form');
-const roman_output = document.getElementById('roman-numeral');
+const romanOutput = document.getElementById('roman-numeral');
 
-let roman_dict = {
+const intToRoman = document.getElementById('integer-to-roman');
+const romanToInt = document.getElementById('roman-to-integer');
+const toggleSwitch = document.getElementById('toggleCheckbox');
+const modeTitle = document.getElementById('mode-title');
+
+const romanDict = {
     "M": 1000,
     "CM": 900,
     "D": 500,
@@ -17,13 +22,23 @@ let roman_dict = {
     "I": 1
 };
 
+// ROMAN → INTEGER
+function convertToInteger(roman) {
+    // TODO: write your Roman → integer algorithm here
+}
+
+
+// -------------------------
+// ERROR MESSAGE
+// -------------------------
+
 function showError(message) {
     const errorBox = document.getElementById('error-message-box');
     const errorMessage = document.getElementById('error-message');
-    const progressBar = errorBox.querySelector('.progress-bar');
+    const progressBar = document.getElementById('progress-bar');
     const errorProgress = document.getElementById('completion-bar');
 
-    if (!errorBox || !errorMessage || !progressBar || !errorProgress) return;
+    if (!errorBox || !errorMessage || !progressBar || !errorProgress) { return;};
 
     errorMessage.innerText = message;
 
@@ -45,30 +60,95 @@ function showError(message) {
     }, 6000);
 }
 
-function convert_to_roman(number) {
-    let final_str = '';
+// INTEGER → ROMAN
+function convertToRoman(number) {
+    let finalStr = '';
 
     if (!Number.isInteger(number) || number < 1 || number > 3999) {
-        showError('Please enter an integer between 1-3999.');
-        return final_str;
-    } 
+        showError('Please enter an integer between 1–3999.');
+        return '';
+    }
 
-    for (let [key, value] of Object.entries(roman_dict)) {
+    for (let [key, value] of Object.entries(romanDict)) {
         let count = Math.floor(number / value);
 
-        final_str += key.repeat(count);
+        finalStr += key.repeat(count);
         number -= value * count;
     }
 
-    return final_str;
+    return finalStr;
 }
 
-// Detect when user submits a number, and calls convert_to_roman
+// MODE SWITCHING
+
+function switchMode() {
+    if (toggleSwitch.checked) {
+        // Roman → Integer
+        intToRoman.style.display = 'none';
+        romanToInt.style.display = 'block';
+
+        modeTitle.textContent = 'Roman Numeral into Integer';
+
+        localStorage.setItem('mode', 'roman-to-int');
+
+    } else {
+        // Integer → Roman
+        intToRoman.style.display = 'block';
+        romanToInt.style.display = 'none';
+
+        modeTitle.textContent = 'Integer into Roman Numeral';
+
+        localStorage.setItem('mode', 'int-to-roman');
+    }
+
+    // Clear previous result when switching modes
+    romanOutput.textContent = '--';
+}
+
+
+// -------------------------
+// LOAD SAVED MODE
+// -------------------------
+
+const savedMode = localStorage.getItem('mode');
+
+if (savedMode === 'roman-to-int') {
+    toggleSwitch.checked = true;
+} else {
+    toggleSwitch.checked = false;
+}
+
+switchMode();
+
+
+const switchButton = document.getElementById('switch');
+
+switchButton.addEventListener('click', function() {
+    toggleSwitch.checked = !toggleSwitch.checked;
+    switchMode();
+});
+
+// -------------------------
+// FORM SUBMISSION
+// -------------------------
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const formData = new FormData(form);
-    const number = Number(formData.get('number'));
+    if (toggleSwitch.checked) {
+        // Roman → Integer
 
-    roman_output.textContent = convert_to_roman(number);
+        const romanInput = document.getElementById('roman-input');
+        const roman = romanInput.value.trim().toUpperCase();
+
+        romanOutput.textContent = convertToInteger(roman);
+
+    } else {
+        // Integer → Roman
+
+        const integerInput = document.getElementById('integer-input');
+        const number = Number(integerInput.value);
+
+        romanOutput.textContent = convertToRoman(number);
+    }
 });
